@@ -5,14 +5,14 @@ class PigeonpostGenerator < Rails::Generators::NamedBase
 
 
   argument :model_name ,:type => :string , :default => 'user'
-	argument :atributes  ,:type => :array  , :default => @@model_attr.join(' ')
+	argument :atributes  ,:type => :array  , :default => ''
 
 	def generate_model
 		#check if the class exist
 		if defined?(User)
 
 		else
-			generate('model',"#{model_name} #{atributes}")
+			generate('model',"#{model_name} #{@@model_attr} #{atributes}")
 		end
 
 	end

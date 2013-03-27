@@ -5,4 +5,4 @@ Example:
     rails generate pigeonpost Thing
 
     This will create:
-        what/will/it/create
+        rails g piegonpost user [optional columns for db]
