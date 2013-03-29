@@ -9,6 +9,8 @@ class PigeonpostGenerator < Rails::Generators::NamedBase
 
 	def generate_model
 		#check if the class exist
+		puts defined?(User)
+
 		if defined?(User)
 
 		else
