@@ -252,7 +252,7 @@ $("#mark_as_read").on("click",function(){
 
 		$(".search_messages").keyup(function(){
 
-			if ( $(this).val().length < 3 && $(this).val().length != 0) return false;
+			//if ( $(this).val().length < 2 && $(this).val().length != 0) return true;
 
 			if ($(this).attr('tbl')=='inbox'){
 				oInboxTable.fnDraw();

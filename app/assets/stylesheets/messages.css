@@ -28,6 +28,10 @@ th{
 	background-color:lightyellow !important;
 }
 
+.nav-tabs{
+	margin-top: 35px;
+}
+
 .nav-tabs li{
 	margin: 4px;
 }
@@ -46,7 +50,6 @@ th{
 	border-left: solid blue 2px !important;
 	font-weight: bold;
 }
-
-.dataTable{
-	min-height:350px;
+.tab-content{
+	overflow: hidden;
 }

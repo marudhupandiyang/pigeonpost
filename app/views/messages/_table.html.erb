@@ -2,6 +2,11 @@
 &nbsp;&nbsp;&nbsp;
 
 <div class="btn-group">
+	<button class="btn compose_messsage" data-toggle="modal" href="#compose_new_message_modal">
+		<i  title="Compose new Message" class=" icon-pencil"></i>
+		Compose
+	</button>
+
 	 <button class="btn delete_messsage" tbl="<%=table_name%>"><i  title="Delete Selected" class=" icon-trash"></i></button>
 	 <button class="btn refresh_messsage" tbl="<%=table_name%>"><i  title="Delete Selected" class=" icon-refresh"></i></button>
 
@@ -27,10 +32,17 @@
 			<th><input type="checkbox" class="master_check"  tbl="<%=table_name%>"></th>
 
 			<th> <i class="action icon-user"></i>
-				Sender </th>
+				<% if table_name == 'inbox' %>
+					Sender
+				<% elsif table_name == 'sentbox' %>
+					Receiver
+				<% else %>
+					User
+				<% end %>
+			</th>
 
 			<th> <i class="action icon-envelope"></i>
-				Message</th>
+				Subject</th>
 
 			<th> <i class="action icon-time"></i>
 				Time</th>
