@@ -27,3 +27,26 @@ th{
 .unread > td{
 	background-color:lightyellow !important;
 }
+
+.nav-tabs li{
+	margin: 4px;
+}
+ .nav-tabs a {
+ 	 padding:2px !important;
+ }
+.nav-tabs , .nav-tabs a {
+	border: none !important;
+
+}
+.nav-tabs li{
+	border:none;
+}
+
+.nav-tabs .active{
+	border-left: solid blue 2px !important;
+	font-weight: bold;
+}
+
+.dataTable{
+	min-height:350px;
+}

@@ -5,11 +5,11 @@
 
 	$(document).ready(function(){
 
-	$.extend( $.fn.dataTableExt.oStdClasses, {
-		"sSortAsc": "header headerSortDown",
-		"sSortDesc": "header headerSortUp",
-		"sSortable": "header"
-	} );
+	// $.extend( $.fn.dataTableExt.oStdClasses, {
+	// 	"sSortAsc": "header headerSortDown",
+	// 	"sSortDesc": "header headerSortUp",
+	// 	"sSortable": "header"
+	// } );
 
 		//create a jquery datatable for display messages
 		// this one is for inbox
@@ -18,8 +18,6 @@
 	  		"sAjaxSource": '/msg/get/inbox' ,
         "bFilter":false,
         "iDisplayLength" : 15,
-        'sScrollY':'330px',
-        'sScrollX':'100%',
         "bAutoWidth": false,
         "sPaginationType": "bootstrap",
 	  		"bProcessing": false,
@@ -32,6 +30,39 @@
       	}
 		});
 
+		oSentboxTable = $('#sentbox_table').dataTable({
+			  "sDom": "<r>t<pi>",
+	  		"sAjaxSource": '/msg/get/sentbox' ,
+        "bFilter":false,
+        "iDisplayLength" : 15,
+        "bAutoWidth": false,
+        "sPaginationType": "bootstrap",
+	  		"bProcessing": false,
+    	  "bServerSide": true,
+     	  "aoColumns": [{ sWidth: '1%',"bSortable":false },{ sWidth: '19%',"bSortable":true},{ sWidth: '65%',"bSortable":false},{ sWidth: '10%',"bSortable":true }],
+		    "fnServerParams": function ( aoData ) {
+					if ($.trim($("#search_sentbox").val()) != ""){
+         		aoData.push( { "name" : "searchq" ,"value" : $("#search_sentbox").val() } );
+        	}
+      	}
+		});
+
+		oDeleteboxTable = $('#deletebox_table').dataTable({
+			  "sDom": "<r>t<pi>",
+	  		"sAjaxSource": '/msg/get/deletebox' ,
+        "bFilter":false,
+        "iDisplayLength" : 15,
+        "bAutoWidth": false,
+        "sPaginationType": "bootstrap",
+	  		"bProcessing": false,
+    	  "bServerSide": true,
+     	  "aoColumns": [{ sWidth: '1%',"bSortable":false },{ sWidth: '19%',"bSortable":true},{ sWidth: '65%',"bSortable":false},{ sWidth: '10%',"bSortable":true }],
+		    "fnServerParams": function ( aoData ) {
+					if ($.trim($("#search_deletebox").val()) != ""){
+         		aoData.push( { "name" : "searchq" ,"value" : $("#search_deletebox").val() } );
+        	}
+      	}
+		});
 
 		//toggle checkbox in the table when the master check box is changed
 		// dn use click function, always use change function (best practice)
@@ -87,10 +118,10 @@ $('.delete_messsage').click(function(){
 			if (that.attr("tbl")=='inbox'){
 				oInboxTable.fnDraw();
 			}else if (that.attr("tbl")=='sentbox') {
-				oSentBoxTable.fnDraw();
+				oSentboxTable.fnDraw();
 			}
 			else if  (that.attr("tbl")=='deletebox') {
-				oDeleteBoxTable.fnDraw();
+				oDeleteboxTable.fnDraw();
 			}
 		},
 		error:function(){
@@ -227,10 +258,10 @@ $("#mark_as_read").on("click",function(){
 				oInboxTable.fnDraw();
 			}
 			else if ($(this).attr('tbl')=='sentbox'){
-				oSentBoxTable.fnDraw();
+				oSentboxTable.fnDraw();
 			}
 			else if ($(this).attr('tbl')=='deletebox'){
-				oDeleteBoxTable.fnDraw();
+				oDeleteboxTable.fnDraw();
 			}
 
 		});
@@ -271,26 +302,11 @@ $("#mark_as_read").on("click",function(){
 				oInboxTable.fnDraw();
 			}
 			else if ($(this).attr('tbl') == 'sentbox'){
-				oSentBoxTable.fnDraw();
+				oSentboxTable.fnDraw();
 			}
 			else if ($(this).attr('tbl') == 'deletebox'){
-				oDeleteBoxTable.fnDraw();
+				oDeleteboxTable.fnDraw();
 			}
 		});
-
-		if (window.location.hash != ' '){
-			$("#search_inbox").val(window.location.hash);
-			$("#search_inbox").trigger('keyup');
-		}
-
-		//redraw tables to avoid the display issuee.. no idea why?
-		// oInboxTable.fnAdjustColumnSizing();
-		// oSentBoxTable.fnAdjustColumnSizing();
-		// oDeleteBoxTable.fnAdjustColumnSizing();
-
-		// $('#inbox th:first').unbind();
-		// $("#sentbox th:first").unbind();
-		// $("#deletebox th:first").unbind();
-
 
 	});

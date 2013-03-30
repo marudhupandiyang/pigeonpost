@@ -186,15 +186,15 @@ class MessagesController < ApplicationController
     elsif params[:box] == 'deletebox'
       if search !=''
         if search_user
-          messages = P2p::Message.deleted(search_user.id).order(order).where("sender_id = #{search_user.id} or receiver_id = #{search_user.id} ").paginate( :page => start,:per_page => 10)
-          message_count = P2p::Message.deleted(search_user.id).where("sender_id = #{search_user.id} or receiver_id = #{search_user.id} ").count
+          messages = Message.trash(user.id).order(order).where("sender_id = #{search_user.id} or receiver_id = #{search_user.id} ").paginate( :page => start,:per_page => 10)
+          message_count = Message.trash(user.id).where("sender_id = #{search_user.id} or receiver_id = #{search_user.id} ").count
         else
-          messages = P2p::Message.deleted(search_user.id).order(order).where(search_message).paginate( :page => start,:per_page => 10)
-          message_count = P2p::Message.deleted(search_user.id).where(search_message).count
+          messages = Message.trash(user.id).order(order).where(search_message).paginate( :page => start,:per_page => 10)
+          message_count = Message.trash(user.id).where(search_message).count
         end
       else
-        messages = P2p::Message.deleted(search_user.id).order(order).paginate( :page => start,:per_page => 10)
-        message_count = P2p::Message.deleted(search_user.id).count
+        messages = Message.trash(user.id).order(order).paginate( :page => start,:per_page => 10)
+        message_count = Message.trash(user.id).count
       end
     end
     # form the response for the datatable

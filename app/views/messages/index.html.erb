@@ -5,16 +5,33 @@
 
 <div class="container">
 
-	<span class="span8">
-		<button class="btn" id= "compose_messsage" data-toggle="modal" href="#compose_new_message_modal">
-			<i  title="Compose new Message" class=" icon-pencil"></i>
-			Compose
-		</button>
+	<span class="span9">
 
+		<div class="tabbable tabs-left">
+		  <ul class="nav nav-tabs" id="message_tab">
+	 			<a class="" id= "compose_messsage" data-toggle="modal" href="#compose_new_message_modal">
+					<i  title="Compose new Message" class=" icon-pencil"></i>
+					Compose
+				</a>
+		    <li class="active"><a  data-toggle="tab" href="#inbox">Inbox</a></li>
+		    <li><a  data-toggle="tab" href="#sentbox">Sentbox</a></li>
+		    <li><a  data-toggle="tab" href="#deletebox">Trash</a></li>
+		  </ul>
 
+		  <div class="tab-content">
+		    <div class="tab-pane active" id="inbox">
+		    	<%= render 'table' ,:table_name => 'inbox' %>
+		    </div>
+		    <div class="tab-pane" id="sentbox">
+		    	<%= render 'table' ,:table_name => 'sentbox' %>
+		    </div>
+		    <div class="tab-pane" id="deletebox">
+		    	<%= render 'table' ,:table_name => 'deletebox' %>
+		    </div>
 
+		  </div>
+		</div>
 
-		<%= render 'table' ,:table_name => 'inbox' %>
 	</span>
 
 </div>
