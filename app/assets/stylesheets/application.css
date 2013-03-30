@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+
+.fleft{
+	float:left;
+}
+
+.fright{
+	float:right;
+}

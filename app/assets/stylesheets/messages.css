@@ -1,0 +1,29 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+
+*= require font-awesome.min
+
+*/
+
+
+
+
+th{
+	color:#444;
+}
+
+.dataTables_paginate{
+	display: inline-block;
+	float:right;
+	margin:0px;
+}
+
+.dataTables_info{
+	display: inline-block;
+	float: left;
+}
+
+.unread > td{
+	background-color:lightyellow !important;
+}

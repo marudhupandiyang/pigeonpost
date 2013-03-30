@@ -8,6 +8,15 @@
 </head>
 <body>
 
+	<div class="fright">
+		<% if session[:id].nil?%>
+			Not Logged in	
+		<% else %>
+			<%= session[:name] %> (<%=session[:id]%>) <%=link_to 'Logout' , "/user/unset" %>
+		<% end %>
+
+	</div>
+
 <%= yield %>
 
 </body>

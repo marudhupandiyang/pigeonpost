@@ -1,0 +1,70 @@
+
+<br/>
+<br/>
+
+
+<div class="container">
+
+	<span class="span8">
+		<button class="btn" id= "compose_messsage" data-toggle="modal" href="#compose_new_message_modal">
+			<i  title="Compose new Message" class=" icon-pencil"></i>
+			Compose
+		</button>
+
+
+
+
+		<%= render 'table' ,:table_name => 'inbox' %>
+	</span>
+
+</div>
+
+
+  <!-- Modal -->
+  <div id="compose_new_message_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="compose_new_message_Label" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="compose_new_message_modalLabel">Compose Message</h3>
+    </div>
+    <div class="modal-body">
+      <p>
+				<%= form_for @user.sent_messages.new ,:remote => true ,:html => {:class => 'form-horizontal'} do |newmsg|%>
+
+					<div class="control-group">
+						<%= newmsg.label :receiver_id ,:class => "control-label" %>
+						<div class="controls">
+							<%= newmsg.text_field :receiver_id %>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<%= newmsg.label :subject ,:class => "control-label"  %>
+						<div class="controls">
+							<%= newmsg.text_field :subject %>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<%= newmsg.label :message ,:class => "control-label"  %>
+						<div class="controls">
+							<%= newmsg.text_area :message ,:cols => 10 ,:rows => 8 %>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<div class="controls">
+							<%= newmsg.submit :class=> 'btn btn-primary' %>
+						</div>
+					</div>
+
+
+
+				<% end %>
+      </p>
+
+    </div>
+  </div>
+
+
+  </div>
+</div>

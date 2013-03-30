@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject: MyText
+  message: MyText
+  sender: 1
+  receiver: 1
+  senderdelete: 2013-03-30 01:09:16
+  receiverdelete: 2013-03-30 01:09:16
+
+two:
+  subject: MyText
+  message: MyText
+  sender: 1
+  receiver: 1
+  senderdelete: 2013-03-30 01:09:16
+  receiverdelete: 2013-03-30 01:09:16

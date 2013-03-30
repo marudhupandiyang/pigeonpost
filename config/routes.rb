@@ -1,4 +1,24 @@
 MessageGem::Application.routes.draw do
+
+  scope 'user' do
+    get 'set/:id' => "users#set"
+    get 'unset' => "users#unset"
+    get 'create/:name' => 'users#create'
+    get 'edit/:id/:name' => 'users#edit'
+    get 'del/:id' => "users#destroy"
+    get 'list' => "users#list"
+  end
+
+  resources :messages
+
+  scope 'msg' do
+    get 'get/:box' => 'messages#getbox'
+  end
+
+  root :to => 'messages#index'
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
